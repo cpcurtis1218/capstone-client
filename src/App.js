@@ -13,6 +13,7 @@ import Home from './content/Home'
 import Expenses from './content/Expenses'
 import Expense from './content/Expense'
 import ExpenseCreate from './content/ExpenseCreate'
+import ExpenseEdit from './content/ExpenseEdit'
 
 import Alert from 'react-bootstrap/Alert'
 
@@ -64,6 +65,7 @@ class App extends Component {
           <Route exact path='/expenses' component={Expenses} />
           <Route exact path='/expenses/:id' component={Expense} />
           <Route exact path='/expenses-create' component={ExpenseCreate} />
+          <Route exact path='/expenses/:id/edit' component={ExpenseEdit} />
         </main>
       </React.Fragment>
     )
