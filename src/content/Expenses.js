@@ -25,6 +25,7 @@ class Expenses extends Component {
     return (
       <div>
         <h3>My Expenses</h3>
+        <p>{this.props.location.state ? this.props.location.state.message : ''}</p>
         <ul>
           {this.state.expenses.map(expense => (
             <li key={expense.id} className="">
