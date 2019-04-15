@@ -7,3 +7,12 @@ body {
 .alert {
   margin: 30px;
 }
+
+.expenses {
+  display: inline-block;
+  border: 2px solid black;
+  list-style-type: none;
+  margin: 10px;
+  height: 250px;
+  width: 250px;
+}
