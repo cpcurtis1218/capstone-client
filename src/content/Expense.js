@@ -43,7 +43,7 @@ class Expense extends Component {
       const { amount, category, description, id } = this.state.expense
       return (
         <div className="m-2 p-2 bg-light shadow-lg">
-          <h3>${amount}</h3>
+          <h3>${parseFloat(Math.round(amount * 100) / 100).toFixed(2)}</h3>
           <p>Category: {category}</p>
           <p>Description: {description}</p>
           <button onClick={() => { this.handleDelete(id) }}>Delete</button>
