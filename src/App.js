@@ -9,6 +9,9 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
+import Home from './content/Home'
+import Expenses from './content/Expenses'
+
 import Alert from 'react-bootstrap/Alert'
 
 class App extends Component {
@@ -55,6 +58,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
+          <Route exact path='/' component={Home} />
+          <Route exact path='/expenses' component={Expenses} />
         </main>
       </React.Fragment>
     )
