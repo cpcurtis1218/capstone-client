@@ -28,8 +28,10 @@ class Expenses extends Component {
         <p>{this.props.location.state ? this.props.location.state.message : ''}</p>
         <ul>
           {this.state.expenses.map(expense => (
-            <li key={expense.id} className="btn">
+            <li key={expense.id} className="expenses">
               <Link to={'/expenses/' + expense.id} className="btn btn-warning m-1">{parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</Link>
+              <p>Category: {expense.category}</p>
+              <p>Description: {expense.description}</p>
             </li>
           ))}
         </ul>
