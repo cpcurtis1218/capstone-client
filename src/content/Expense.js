@@ -48,6 +48,7 @@ class Expense extends Component {
           <p>Description: {description}</p>
           <button onClick={() => { this.handleDelete(id) }}>Delete</button>
           <Link to={this.props.match.url + '/edit'}><button className="m-2">Edit</button></Link>
+          <p>{this.props.location.state ? this.props.location.state.message : ''}</p>
         </div>
       )
     }
