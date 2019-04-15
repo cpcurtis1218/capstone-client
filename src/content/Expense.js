@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router'
 import Spinner from 'react-bootstrap/Spinner'
 
 class Expense extends Component {
@@ -23,9 +24,21 @@ class Expense extends Component {
       .catch(console.log)
   }
 
+  handleDelete = id => {
+    axios.delete(apiUrl + '/expenses/' + id)
+      .then(() => this.setState({
+        redirect: true }))
+      .catch(console.log)
+  }
+
   render () {
     if (!this.state.expense) {
       return <Spinner animation="grow" className="m-3"/>
+    } else if (this.state.redirect) {
+      return <Redirect to={{
+        pathname: '/expenses',
+        state: { message: 'Expense was deleted.' }
+      }} />
     } else {
       const { amount, category, description, id } = this.state.expense
       return (
