@@ -11,6 +11,7 @@ import ChangePassword from './auth/components/ChangePassword'
 
 import Home from './content/Home'
 import Expenses from './content/Expenses'
+import Expense from './content/Expense'
 
 import Alert from 'react-bootstrap/Alert'
 
@@ -60,6 +61,7 @@ class App extends Component {
           )} />
           <Route exact path='/' component={Home} />
           <Route exact path='/expenses' component={Expenses} />
+          <Route exact path='/expenses/:id' component={Expense} />
         </main>
       </React.Fragment>
     )
