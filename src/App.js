@@ -15,15 +15,16 @@ import Expense from './content/Expense'
 import ExpenseCreate from './content/ExpenseCreate'
 import ExpenseEdit from './content/ExpenseEdit'
 
-import Alert from 'react-bootstrap/Alert'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure()
 
 class App extends Component {
   constructor () {
     super()
 
     this.state = {
-      user: null,
-      alerts: []
+      user: null
     }
   }
 
@@ -31,23 +32,25 @@ class App extends Component {
 
   clearUser = () => this.setState({ user: null })
 
+  // type is a boolean. If true, display success format, else display error format
   alert = (message, type) => {
-    this.setState({ alerts: [...this.state.alerts, { message, type }] })
+    if (type) {
+      toast.success(message, {
+        position: toast.POSITION.BOTTOM_CENTER
+      })
+    } else {
+      toast.error(message, {
+        position: toast.POSITION.BOTTOM_CENTER
+      })
+    }
   }
 
   render () {
-    const { alerts, user } = this.state
+    const { user } = this.state
 
     return (
       <React.Fragment>
         <Header user={user} />
-        {alerts.map((alert, index) => (
-          <Alert key={index} dismissible variant={alert.type}>
-            <Alert.Heading>
-              {alert.message}
-            </Alert.Heading>
-          </Alert>
-        ))}
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
