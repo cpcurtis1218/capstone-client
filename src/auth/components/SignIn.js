@@ -25,12 +25,12 @@ class SignIn extends Component {
 
     signIn(this.state)
       .then(res => setUser(res.data.user))
-      .then(() => alert(messages.signInSuccess, 'success'))
+      .then(() => alert(messages.signInSuccess, true))
       .then(() => history.push('/'))
       .catch(error => {
         console.error(error)
         this.setState({ email: '', password: '' })
-        alert(messages.signInFailure, 'danger')
+        alert(messages.signInFailure, false)
       })
   }
 
