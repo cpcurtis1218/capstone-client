@@ -12,7 +12,8 @@ class ExpenseEdit extends Component {
       expense: {
         amount: '',
         category: '',
-        description: ''
+        description: '',
+        charge_date: ''
       },
       updated: false,
       message: null
@@ -47,7 +48,7 @@ class ExpenseEdit extends Component {
     })
       .then(() => this.setState({ updated: true }))
       .catch(() => this.setState({
-        expense: { ...expense, title: '', director: '', year: '' },
+        expense: { ...expense, amount: '', category: '', description: '', charge_date: '' },
         message: 'Update failed, please fill out forms and try again.'
       }))
   }
@@ -60,11 +61,13 @@ class ExpenseEdit extends Component {
         state: { message: 'Expense Updated.' }
       }}/>
     } else {
-      const { amount, category, description } = expense
+      const { amount, category, description, chargeDate } = expense
       return (
         <div>
           <h3>Create a new Expense!</h3>
           <form className="p-2" onSubmit={this.handleSubmit}>
+            <label htmlFor="date">Date:</label>
+            <input required={true} value={chargeDate} type="date" name="charge_date" className="m-1" onChange={this.handleChange} />
             <label htmlFor="amount">Amount:</label>
             <input required={true} value={amount} type="number" name="amount" className="m-1" onChange={this.handleChange} />
             <label htmlFor="category">Category:</label>

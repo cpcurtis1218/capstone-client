@@ -12,7 +12,8 @@ class ExpenseCreate extends Component {
       expense: {
         amount: '',
         category: '',
-        description: ''
+        description: '',
+        charge_date: ''
       },
       created: false,
       message: null
@@ -53,11 +54,13 @@ class ExpenseCreate extends Component {
         state: { message: 'Expense created.' }
       }}/>
     } else {
-      const { amount, category, description } = expense
+      const { amount, category, description, chargeDate } = expense
       return (
         <div>
           <h3>Create a new Expense!</h3>
           <form className="p-2" onSubmit={this.handleSubmit}>
+            <label htmlFor="date">Date:</label>
+            <input required={true} value={chargeDate} type="date" name="charge_date" className="m-1" onChange={this.handleChange} />
             <label htmlFor="amount">Amount:</label>
             <input required={true} value={amount} type="number" name="amount" className="m-1" onChange={this.handleChange} />
             <label htmlFor="category">Category:</label>
