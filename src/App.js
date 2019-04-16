@@ -36,11 +36,11 @@ class App extends Component {
   alert = (message, type) => {
     if (type) {
       toast.success(message, {
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_RIGHT
       })
     } else {
       toast.error(message, {
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_RIGHT
       })
     }
   }
@@ -64,11 +64,19 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <Route exact path='/' component={Home} />
-          <Route exact path='/expenses' component={Expenses} />
-          <Route exact path='/expenses/:id' component={Expense} />
-          <Route exact path='/expenses-create' component={ExpenseCreate} />
-          <Route exact path='/expenses/:id/edit' component={ExpenseEdit} />
+          <Route exact path='/' component={Home} alert={this.alert} />
+          <Route exact path='/expenses' render={() => (
+            <Expenses alert={this.alert} user={user}/>
+          )} />
+          <Route exact path='/expenses/:id' render={() => (
+            <Expense alert={this.alert} user={user}/>
+          )} />
+          <Route exact path='/expenses-create' render={() => (
+            <ExpenseCreate alert={this.alert} user={user} />
+          )}/>
+          <Route exact path='/expenses/:id/edit' render={() => (
+            <ExpenseEdit alert={this.alert} user={user} />
+          )} />
         </main>
       </React.Fragment>
     )
