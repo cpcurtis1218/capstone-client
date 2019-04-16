@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router'
 import Spinner from 'react-bootstrap/Spinner'
+import messages from './messagesContent.js'
 
 class Expense extends Component {
   constructor () {
@@ -25,10 +26,14 @@ class Expense extends Component {
   }
 
   handleDelete = id => {
+    const { alert } = this.props
     axios.delete(apiUrl + '/expenses/' + id)
+      .then(() => alert(messages.deleteSuccess, true))
       .then(() => this.setState({
         redirect: true }))
-      .catch(console.log)
+      .catch(() => {
+        alert(messages.failure, false)
+      })
   }
 
   render () {
@@ -36,8 +41,7 @@ class Expense extends Component {
       return <Spinner animation="grow" className="m-3"/>
     } else if (this.state.redirect) {
       return <Redirect to={{
-        pathname: '/expenses',
-        state: { message: 'Expense was deleted.' }
+        pathname: '/expenses'
       }} />
     } else {
       const { amount, category, description, chargeDate, id } = this.state.expense
@@ -49,11 +53,10 @@ class Expense extends Component {
           <p>Description: {description}</p>
           <button onClick={() => { this.handleDelete(id) }}>Delete</button>
           <Link to={this.props.match.url + '/edit'}><button className="m-2">Edit</button></Link>
-          <p>{this.props.location.state ? this.props.location.state.message : ''}</p>
         </div>
       )
     }
   }
 }
 
-export default Expense
+export default withRouter(Expense)

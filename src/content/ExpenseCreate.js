@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
-// import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router'
+import messages from './messagesContent.js'
 
 class ExpenseCreate extends Component {
   constructor () {
@@ -29,29 +30,32 @@ class ExpenseCreate extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
 
-    // destructuring the expense object
+    // destructuring the expense and props objects
     const { expense } = this.state
+    const { alert } = this.props
 
     axios({
       url: `${apiUrl}/expenses`,
       method: 'post',
       data: { expense }
     })
+      .then(() => alert(messages.createSuccess, true))
       .then(response => this.setState({
-        created: true,
-        expense: response.data.expense }))
-      .catch(() => this.setState({
-        expense: { ...expense, amount: '', category: '', description: '' },
-        message: 'Create failed, please fill out forms and try again.'
+        created: true
       }))
+      .catch(() => {
+        this.setState({
+          expense: { ...expense, amount: '', category: '', description: '' }
+        })
+        alert(messages.failure, false)
+      })
   }
 
   render () {
-    const { expense, created, message } = this.state
+    const { expense, created } = this.state
     if (created) {
       return <Redirect to={{
-        pathname: '/expenses',
-        state: { message: 'Expense created.' }
+        pathname: '/expenses'
       }}/>
     } else {
       const { amount, category, description, chargeDate } = expense
@@ -69,11 +73,10 @@ class ExpenseCreate extends Component {
             <input value={description} name="description" className="m-1" onChange={this.handleChange} />
             <button type="submit">Submit</button>
           </form>
-          <p>{message}</p>
         </div>
       )
     }
   }
 }
 
-export default ExpenseCreate
+export default withRouter(ExpenseCreate)

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
-// import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router'
+import messages from './messagesContent.js'
 
 class ExpenseEdit extends Component {
   constructor () {
@@ -15,8 +16,7 @@ class ExpenseEdit extends Component {
         description: '',
         chargeDate: ''
       },
-      updated: false,
-      message: null
+      updated: false
     }
   }
 
@@ -37,28 +37,33 @@ class ExpenseEdit extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    console.log('this.props is', this.props)
 
     // destructuring the expense object
     const { expense } = this.state
+    const { alert } = this.props
 
     axios({
       url: `${apiUrl}/expenses/${expense.id}`,
       method: 'patch',
       data: { expense }
     })
+      .then(() => alert(messages.editSuccess, true))
       .then(() => this.setState({ updated: true }))
-      .catch(() => this.setState({
-        expense: { ...expense, amount: '', category: '', description: '', charge_date: '' },
-        message: 'Update failed, please fill out forms and try again.'
-      }))
+      .catch(() => {
+        this.setState({
+          expense: { ...expense, amount: '', category: '', description: '', charge_date: '' },
+          message: 'Update failed, please fill out forms and try again.'
+        })
+        alert(messages.failure, false)
+      })
   }
 
   render () {
     const { expense, updated } = this.state
     if (updated) {
       return <Redirect to={{
-        pathname: `/expenses/${expense.id}`,
-        state: { message: 'Expense Updated.' }
+        pathname: `/expenses/${expense.id}`
       }}/>
     } else {
       const { amount, category, description, chargeDate } = expense
@@ -76,11 +81,10 @@ class ExpenseEdit extends Component {
             <input value={description} name="description" className="m-1" onChange={this.handleChange} />
             <button type="submit">Submit</button>
           </form>
-          <p>{this.props.location.state ? this.props.location.state.message : ''}</p>
         </div>
       )
     }
   }
 }
 
-export default ExpenseEdit
+export default withRouter(ExpenseEdit)
