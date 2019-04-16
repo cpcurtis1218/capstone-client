@@ -13,7 +13,7 @@ class ExpenseCreate extends Component {
         amount: '',
         category: '',
         description: '',
-        charge_date: ''
+        chargeDate: ''
       },
       created: false,
       message: null
@@ -60,7 +60,7 @@ class ExpenseCreate extends Component {
           <h3>Create a new Expense!</h3>
           <form className="p-2" onSubmit={this.handleSubmit}>
             <label htmlFor="date">Date:</label>
-            <input required={true} value={chargeDate} type="date" name="charge_date" className="m-1" onChange={this.handleChange} />
+            <input required={true} value={chargeDate} type="date" name="chargeDate" className="m-1" onChange={this.handleChange} />
             <label htmlFor="amount">Amount:</label>
             <input required={true} value={amount} type="number" name="amount" className="m-1" onChange={this.handleChange} />
             <label htmlFor="category">Category:</label>
