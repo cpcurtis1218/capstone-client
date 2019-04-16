@@ -68,7 +68,7 @@ class ExpenseEdit extends Component {
           <form className="p-2" onSubmit={this.handleSubmit}>
             <label htmlFor="date">Date:</label>
             <input required={true} value={chargeDate} type="date" name="chargeDate" className="m-1" onChange={this.handleChange} />
-            <label htmlFor="amount">Amount:</label>
+            <label htmlFor="amount">Amount: $</label>
             <input required={true} value={amount} type="number" name="amount" className="m-1" onChange={this.handleChange} />
             <label htmlFor="category">Category:</label>
             <input required={true} value={category} name="category" className="m-1" onChange={this.handleChange} />

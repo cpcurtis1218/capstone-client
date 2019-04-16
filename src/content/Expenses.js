@@ -30,7 +30,7 @@ class Expenses extends Component {
           {this.state.expenses.map(expense => (
             <li key={expense.id} className="expenses">
               <Link to={'/expenses/' + expense.id} className="btn btn-warning m-1">{expense.chargeDate}</Link>
-              <p>Amount: {parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</p>
+              <p>Amount: ${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</p>
               <p>Category: {expense.category}</p>
               <p>Description: {expense.description}</p>
             </li>
