@@ -64,7 +64,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <Route exact path='/' component={Home} alert={this.alert} />
+          <Route path='/' component={Home} alert={this.alert} />
           <Route exact path='/expenses' render={() => (
             <Expenses alert={this.alert} user={user}/>
           )} />
