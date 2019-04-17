@@ -17,17 +17,31 @@ class Expense extends Component {
   }
 
   componentDidMount () {
-    const id = this.props.match.params.id
-    axios.get(`${apiUrl}/expenses/${id}`)
+    const { match, user, alert } = this.props
+
+    axios({
+      url: `${apiUrl}/expenses/${match.params.id}`,
+      method: 'get',
+      headers: {
+        Authorization: 'Token token=' + user.token
+      }
+    })
       .then(response => this.setState({
         expense: response.data.expense
       }))
-      .catch(console.log)
+      .catch(() => alert(messages.failure, false))
   }
 
   handleDelete = id => {
-    const { alert } = this.props
-    axios.delete(apiUrl + '/expenses/' + id)
+    const { expense } = this.state
+    const { alert, user } = this.props
+    axios({
+      url: `${apiUrl}/expenses/${expense.id}`,
+      method: 'delete',
+      headers: {
+        Authorization: 'Token token=' + user.token
+      }
+    })
       .then(() => alert(messages.deleteSuccess, true))
       .then(() => this.setState({
         redirect: true }))
