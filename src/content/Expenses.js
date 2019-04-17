@@ -29,7 +29,9 @@ class Expenses extends Component {
   render () {
     const { expenses, loading } = this.state
     if (loading) {
-      return <Spinner animation="grow" className="m-3"/>
+      return (
+        <div><Spinner animation="grow" className="m-3"/></div>
+      )
     } else if (!expenses.length) {
       return (
         <div>
