@@ -1,4 +1,7 @@
 body {
+  background-image: url('https://i.imgur.com/zCPICpg.jpg');
+  background-position: top;
+  background-size: cover;
   font-family: sans-serif;
   margin: 0;
   padding: 0;
@@ -15,4 +18,16 @@ body {
   margin: 10px;
   height: 250px;
   width: 250px;
+}
+
+.homenav {
+  text-align: center;
+  width: 100%;
+}
+
+.main-header {
+  // background-image: url('https://i.imgur.com/qtFTF54.jpg');
+  background-image: linear-gradient(169deg, #c10101 , white);
+  background-repeat: round;
+  background-size: contain;
 }
