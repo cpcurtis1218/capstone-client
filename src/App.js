@@ -52,6 +52,9 @@ class App extends Component {
       <React.Fragment>
         <Header user={user} />
         <main className="container">
+          <Route path='/' render={() => (
+            <Home alert={this.alert} user={user}/>
+          )} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
@@ -64,17 +67,16 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <Route path='/' component={Home} alert={this.alert} />
-          <Route exact path='/expenses' render={() => (
+          <AuthenticatedRoute user={user} exact path='/expenses' render={() => (
             <Expenses alert={this.alert} user={user}/>
           )} />
-          <Route exact path='/expenses/:id' render={() => (
+          <AuthenticatedRoute user={user} exact path='/expenses/:id' render={() => (
             <Expense alert={this.alert} user={user}/>
           )} />
-          <Route exact path='/expenses-create' render={() => (
+          <AuthenticatedRoute user={user} exact path='/expenses-create' render={() => (
             <ExpenseCreate alert={this.alert} user={user} />
           )}/>
-          <Route exact path='/expenses/:id/edit' render={() => (
+          <AuthenticatedRoute user={user} exact path='/expenses/:id/edit' render={() => (
             <ExpenseEdit alert={this.alert} user={user} />
           )} />
         </main>
