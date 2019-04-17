@@ -16,9 +16,15 @@ class Expenses extends Component {
   }
 
   componentDidMount () {
-    const { alert } = this.props
-    console.log('expenses component mounted')
-    axios.get(apiUrl + '/expenses')
+    const { alert, user } = this.props
+
+    axios({
+      url: `${apiUrl}/expenses`,
+      method: 'get',
+      headers: {
+        Authorization: 'Token token=' + user.token
+      }
+    })
       .then(response => this.setState({
         expenses: response.data.expenses,
         loading: false
