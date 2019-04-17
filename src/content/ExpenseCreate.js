@@ -32,11 +32,14 @@ class ExpenseCreate extends Component {
 
     // destructuring the expense and props objects
     const { expense } = this.state
-    const { alert } = this.props
+    const { alert, user } = this.props
 
     axios({
       url: `${apiUrl}/expenses`,
       method: 'post',
+      headers: {
+        Authorization: 'Token token=' + user.token
+      },
       data: { expense }
     })
       .then(() => alert(messages.createSuccess, true))
