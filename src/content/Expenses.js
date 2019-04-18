@@ -47,7 +47,7 @@ class Expenses extends Component {
       )
     } else {
       return (
-        <div>
+        <div className="expenses-div">
           <h3>My Expenses</h3>
           <ul>
             {this.state.expenses.map(expense => (
