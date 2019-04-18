@@ -17,9 +17,15 @@ body {
   width: 250px;
 }
 
+.expenses-amount {
+  float: right;
+}
+
 .expenses-btn {
+  background: white;
+  border-radius: 3px;
+  color: #444;
   height: 30px;
-  margin-right: 10px;
   width: 120px;
 }
 

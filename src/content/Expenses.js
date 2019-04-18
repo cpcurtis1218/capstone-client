@@ -54,7 +54,7 @@ class Expenses extends Component {
               <li key={expense.id} className="expenses">
                 <div className="">
                   <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.chargeDate}</button></Link>
-                  ${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}
+                  <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
                 </div>
               </li>
             ))}
