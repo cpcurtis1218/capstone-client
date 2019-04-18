@@ -1,10 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
 body {
   background-image: url('https://i.imgur.com/JAq5ser.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
+  padding: 0;
+}
+
+ul {
   padding: 0;
 }
 
@@ -12,7 +18,8 @@ body {
   background-color: rgba(0, 0, 0, .7);
   border-radius: 3px;
   color: white;
-  max-width: 300px;
+  margin: 0 auto;
+  max-width: 400px;
 }
 
 .expenses {
@@ -21,8 +28,9 @@ body {
   border-radius: 3px;
   color: white;
   list-style-type: none;
+  margin: 0 auto;
   padding: 2px;
-  width: 250px;
+  width: 400px;
 }
 
 .expenses-amount {
@@ -35,6 +43,21 @@ body {
   color: #444;
   height: 30px;
   width: 120px;
+}
+
+.expenses-div {
+  >h3 {
+    text-align: center;
+  }
+}
+
+.expense-form {
+  background-color: rgba(0, 0, 0, .7);
+  border: 1px solid grey;
+  border-radius: 3px;
+  color: white;
+  margin: 0 auto;
+  width: 400px;
 }
 
 .homenav {
