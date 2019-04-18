@@ -94,7 +94,7 @@ class ExpenseEdit extends Component {
             </div>
             <div>
               <label htmlFor="description">Description:</label>
-              <input value={description} name="description" className="m-1" onChange={this.handleChange} />
+              <input value={description || ''} placeholder="Description" name="description" className="m-1" onChange={this.handleChange} />
             </div>
             <button type="submit">Submit</button>
           </form>
