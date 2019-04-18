@@ -78,23 +78,31 @@ class ExpenseEdit extends Component {
       const { amount, category, description, chargeDate } = expense
       return (
         <div className="expense-form">
-          <h3>Create a new Expense!</h3>
+          <h3>Update Expense</h3>
           <form className="p-2" onSubmit={this.handleSubmit}>
-            <div>
+            <div className="m-1">
               <label htmlFor="date">Date:</label>
-              <input required={true} value={chargeDate} type="date" name="chargeDate" className="m-1" onChange={this.handleChange} />
+              <span className="expenses-amount">
+                <input required={true} value={chargeDate} type="date" name="chargeDate" onChange={this.handleChange} />
+              </span>
             </div>
-            <div>
+            <div className="m-1">
               <label htmlFor="amount">Amount: $</label>
-              <input required={true} value={amount} type="number" name="amount" className="m-1" onChange={this.handleChange} />
+              <span className="expenses-amount">
+                <input required={true} value={parseFloat(Math.round(amount * 100) / 100).toFixed(2)} type="number" name="amount" onChange={this.handleChange} />
+              </span>
             </div>
-            <div>
+            <div className="m-1">
               <label htmlFor="category">Category:</label>
-              <input required={true} value={category} name="category" className="m-1" onChange={this.handleChange} />
+              <span className="expenses-amount">
+                <input required={true} value={category} name="category" onChange={this.handleChange} />
+              </span>
             </div>
-            <div>
+            <div className="m-1">
               <label htmlFor="description">Description:</label>
-              <input value={description || ''} placeholder="Description" name="description" className="m-1" onChange={this.handleChange} />
+              <span className="expenses-amount">
+                <input value={description || ''} placeholder="Description" name="description" onChange={this.handleChange} />
+              </span>
             </div>
             <button type="submit">Submit</button>
           </form>
