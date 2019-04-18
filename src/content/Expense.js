@@ -60,13 +60,13 @@ class Expense extends Component {
     } else {
       const { amount, category, description, chargeDate, id } = this.state.expense
       return (
-        <div className="m-2 p-2 bg-light shadow-lg">
+        <div className="m-2 p-2 shadow-lg expense">
           <h3>{chargeDate}</h3>
-          <p>${parseFloat(Math.round(amount * 100) / 100).toFixed(2)}</p>
-          <p>Category: {category}</p>
-          <p>Description: {description}</p>
-          <button onClick={() => { this.handleDelete(id) }}>Delete</button>
-          <Link to={this.props.match.url + '/edit'}><button className="m-2">Edit</button></Link>
+          <p>Amount: <span className="expenses-amount">${parseFloat(Math.round(amount * 100) / 100).toFixed(2)}</span></p>
+          <p>Category: <span className="expenses-amount">{category}</span></p>
+          <p>Description: <span className="expenses-amount">{description}</span></p>
+          <button className="expenses-btn" onClick={() => { this.handleDelete(id) }}>Delete</button>
+          <Link to={this.props.match.url + '/edit'}><button className="expenses-btn ml-3">Edit</button></Link>
         </div>
       )
     }
