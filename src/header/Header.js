@@ -25,7 +25,10 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <header className="main-header">
-    <h1>Expense Tracker 101</h1>
+    <Link to="/">
+      <img src="https://i.imgur.com/PLOpjDY.png"/>
+      <h3>Expense Tracker</h3>
+    </Link>
     <nav>
       { user && <span>Welcome, {user.email}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }
