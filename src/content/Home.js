@@ -8,8 +8,9 @@ class Expenses extends Component {
       return (
         <div className="homenav">
           <ButtonGroup size='lg' className="m-2 justify-content-center">
-            <NavLink to='/expenses' className="btn" activeClassName="selected">View Expenses</NavLink>
-            <NavLink to='/expenses-create' className="btn" activeClassName="selected">New Expense</NavLink>
+            <NavLink exact to='/' className="btn homenav-btn mx-1" activeClassName="selected">Home</NavLink>
+            <NavLink to='/expenses' className="btn homenav-btn mx-1" activeClassName="selected">View Expenses</NavLink>
+            <NavLink to='/expenses-create' className="btn homenav-btn mx-1" activeClassName="selected">New Expense</NavLink>
           </ButtonGroup>
         </div>
       )
