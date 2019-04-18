@@ -60,7 +60,7 @@ class Expense extends Component {
     } else {
       const { amount, category, description, chargeDate, id } = this.state.expense
       return (
-        <div className="m-2 p-2 shadow-lg expense">
+        <div className="p-2 shadow-lg expense">
           <h3>{chargeDate}</h3>
           <p>Amount: <span className="expenses-amount">${parseFloat(Math.round(amount * 100) / 100).toFixed(2)}</span></p>
           <p>Category: <span className="expenses-amount">{category}</span></p>
