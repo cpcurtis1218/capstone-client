@@ -1,6 +1,22 @@
 # Expense Tracker
 
-Also view the backend repo [here](https://github.com/cpcurtis1218/capstone-api).
+The Expense Tracker app provides a way to track personal spending habits.  New users must create an account in order to log in.  Once authenticated, users can create, view, update, and delete their expenses.
+
+## Links
+
+To visit the deployed client, please click [here](https://cpcurtis1218.github.io/capstone-client/#/). <br>
+To visit the deployed api, please click [here](https://desolate-oasis-76612.herokuapp.com/). <br>
+Visit the backend repo [here](https://github.com/cpcurtis1218/capstone-api).<br>
+
+## The App
+
+![Screenshot](https://i.imgur.com/q6ahBbn.jpg)
+
+## Installation
+1. Fork and clone this repository.
+1. Move into the new directory.
+1. Install dependencies by running `npm install`.
+1. Start the server by running `npm run start`.
 
 ## Technologies Used
 In creating this application I used React, Boostrap, CSS, and Axios.
@@ -13,7 +29,7 @@ work using react to build the frontend.
 
 
 ## Current Issues
-One issue is that you cannot search your logged expenses.
+One issue is that the user cannot search their logged expenses.
 
 
 ## Future Additions
@@ -22,18 +38,18 @@ with more ways to view their expense information.
 
 
 ## Wireframes
-- [Mobile View]()
+![Mobile View](https://i.imgur.com/nnPNEJO.png)
 
 
 ## User Stories
-1) As a user, I want to be able to create a new expense.
-1) As a user, I want to be able to see all my expenses.
-1) As a user, I want to be able to view a single expense.
-1) As a user, I want to be able to update an expense.
-1) As a user, I want to be able to delete an expense.
+1. As a user, I want to be able to create a new expense.
+1. As a user, I want to be able to see all my expenses.
+1. As a user, I want to be able to view a single expense.
+1. As a user, I want to be able to update an expense.
+1. As a user, I want to be able to delete an expense.
 
 Stretch:
-1) As a user, I want to be able to sort expenses by date.
-1) As a user, I want to be able to sort expenses by amount.
-1) As a user, I want to be able to sort expenses by category.
-1) As a user, I want to be able to see a graph of my expenses.
+1. As a user, I want to be able to sort expenses by date.
+1. As a user, I want to be able to sort expenses by amount.
+1. As a user, I want to be able to sort expenses by category.
+1. As a user, I want to be able to see a graph of my expenses.
