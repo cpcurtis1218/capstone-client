@@ -89,7 +89,7 @@ class ExpenseEdit extends Component {
             <div className="m-1">
               <label htmlFor="amount">Amount: $</label>
               <span className="expenses-amount">
-                <input required={true} value={parseFloat(Math.round(amount * 100) / 100).toFixed(2)} type="number" name="amount" onChange={this.handleChange} />
+                <input required={true} value={amount} type="number" name="amount" onChange={this.handleChange} />
               </span>
             </div>
             <div className="m-1">
