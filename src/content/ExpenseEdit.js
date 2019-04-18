@@ -44,7 +44,6 @@ class ExpenseEdit extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log('this.props is', this.props)
 
     // destructuring the expense object
     const { expense } = this.state
