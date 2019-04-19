@@ -10,7 +10,7 @@ Visit the backend repo [here](https://github.com/cpcurtis1218/capstone-api).<br>
 
 ## The App
 
-![Screenshot](https://i.imgur.com/q6ahBbn.jpg)
+![Screenshot](https://i.imgur.com/LKqK3Qe.jpg)
 
 ## Installation
 1. Fork and clone this repository.
