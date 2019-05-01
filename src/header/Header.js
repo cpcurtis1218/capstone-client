@@ -20,7 +20,6 @@ const unauthenticatedOptions = (
 const Header = ({ user }) => (
   <header className="main-header">
     <Link to="/">
-      <img src="https://i.imgur.com/PLOpjDY.png"/>
       <h3>Expense Tracker</h3>
     </Link>
     <nav>
