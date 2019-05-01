@@ -4,6 +4,7 @@ import apiUrl from '../apiConfig'
 import { Link } from 'react-router-dom'
 import messages from './messagesContent.js'
 import Spinner from 'react-bootstrap/Spinner'
+import Calendar from 'react-calendar'
 
 class Expenses extends Component {
   constructor () {
@@ -32,6 +33,13 @@ class Expenses extends Component {
       .catch(() => alert(messages.failure, false))
   }
 
+  onChange = date => {
+    return (
+      this.setState({ date }),
+      console.log(this.state)
+    )
+  }
+
   render () {
     const { expenses, loading } = this.state
     if (loading) {
@@ -49,16 +57,21 @@ class Expenses extends Component {
       return (
         <div className="expenses-div">
           <h3>My Expenses</h3>
-          <ul>
-            {this.state.expenses.map(expense => (
-              <li key={expense.id} className="expenses">
-                <div className="">
-                  <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.chargeDate}</button></Link>
-                  <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <div className="container">
+            <div className="row">
+              <Calendar className="calendar col-6" onChange={this.onChange}/>
+              <ul className="col-6">
+                {this.state.expenses.map(expense => (
+                  <li key={expense.id} className="expenses">
+                    <div className="">
+                      <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.chargeDate}</button></Link>
+                      <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       )
     }
