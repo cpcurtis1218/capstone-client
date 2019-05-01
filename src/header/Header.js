@@ -18,7 +18,7 @@ const unauthenticatedOptions = (
 )
 
 const Header = ({ user }) => (
-  <header className="main-header">
+  <header className="main-header sticky-top">
     <Link to="/">
       <h3>Expense Tracker</h3>
     </Link>
