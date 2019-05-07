@@ -14,7 +14,7 @@ class ExpenseEdit extends Component {
         amount: '',
         category: '',
         description: '',
-        chargeDate: ''
+        date: ''
       },
       updated: false
     }
@@ -75,7 +75,7 @@ class ExpenseEdit extends Component {
         pathname: `/expenses/${expense.id}`
       }}/>
     } else {
-      const { amount, category, description, chargeDate } = expense
+      const { amount, category, description, date } = expense
       return (
         <div className="expense-form">
           <h3>Update Expense</h3>
@@ -83,7 +83,7 @@ class ExpenseEdit extends Component {
             <div className="m-1">
               <label htmlFor="date">Date:</label>
               <span className="expenses-amount">
-                <input required={true} value={chargeDate} type="date" name="chargeDate" onChange={this.handleChange} />
+                <input required={true} value={date} type="date" name="date" onChange={this.handleChange} />
               </span>
             </div>
             <div className="m-1">

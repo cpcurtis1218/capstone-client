@@ -58,10 +58,10 @@ class Expense extends Component {
         pathname: '/expenses'
       }} />
     } else {
-      const { amount, category, description, chargeDate, id } = this.state.expense
+      const { amount, category, description, date, id } = this.state.expense
       return (
         <div className="p-2 shadow-lg expense">
-          <h3>{chargeDate}</h3>
+          <h3>{date}</h3>
           <p>Amount: <span className="expenses-amount">${parseFloat(Math.round(amount * 100) / 100).toFixed(2)}</span></p>
           <p>Category: <span className="expenses-amount">{category}</span></p>
           <p>Description: <span className="expenses-amount">{description}</span></p>
