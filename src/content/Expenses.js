@@ -12,7 +12,8 @@ class Expenses extends Component {
 
     this.state = {
       expenses: [],
-      loading: true
+      loading: true,
+      date: null
     }
   }
 
@@ -42,7 +43,6 @@ class Expenses extends Component {
     // conditional to add a 0 in front if month is single digit
     if (orderedDateArray[1].length === 1) {
       orderedDateArray[1] = '0' + orderedDateArray[1]
-      console.log('new orderedDateArray[1] is', orderedDateArray[1])
     }
     // conditional to add 0 in front if day is single digit
     if (orderedDateArray[2].length === 1) {
@@ -57,7 +57,7 @@ class Expenses extends Component {
   }
 
   render () {
-    const { expenses, loading } = this.state
+    const { expenses, loading, date } = this.state
     if (loading) {
       return (
         <div><Spinner animation="grow" className="m-3"/></div>
@@ -67,6 +67,30 @@ class Expenses extends Component {
         <div>
           <h3>My Expenses</h3>
           <h4>No expenses yet, please click <Link to={'/expenses-create'}>here</Link> to add a new expense.</h4>
+        </div>
+      )
+    } else if (date) {
+      const dateChosen = expenses.filter(expense => expense.date === date)
+      return (
+        <div className="expenses-div">
+          <h3>My Expenses</h3>
+          <div className="container">
+            <div className="row">
+              <div className="col-6">
+                <Calendar className="calendar" onChange={this.onChange}/>
+              </div>
+              <ul className="col-6">
+                {dateChosen.map(expense => (
+                  <li key={expense.id} className="expenses">
+                    <div className="">
+                      <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.date}</button></Link>
+                      <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       )
     } else {
