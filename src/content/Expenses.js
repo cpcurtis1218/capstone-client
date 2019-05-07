@@ -33,7 +33,8 @@ class Expenses extends Component {
       .catch(() => alert(messages.failure, false))
   }
 
-  onChange = date => {
+  onChange = dateObj => {
+    const date = dateObj.toLocaleString().split(' ')[0].replace(',', '')
     return (
       this.setState({ date }),
       console.log(this.state)
@@ -59,9 +60,11 @@ class Expenses extends Component {
           <h3>My Expenses</h3>
           <div className="container">
             <div className="row">
-              <Calendar className="calendar col-6" onChange={this.onChange}/>
+              <div className="col-6">
+                <Calendar className="calendar" onChange={this.onChange}/>
+              </div>
               <ul className="col-6">
-                {this.state.expenses.map(expense => (
+                {expenses.map(expense => (
                   <li key={expense.id} className="expenses">
                     <div className="">
                       <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.chargeDate}</button></Link>
