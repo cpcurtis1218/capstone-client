@@ -34,10 +34,25 @@ class Expenses extends Component {
   }
 
   onChange = dateObj => {
-    const date = dateObj.toLocaleString().split(' ')[0].replace(',', '')
+    // changing date object to string, removing comma, splitting on the /
+    const dateArray = dateObj.toLocaleString().split(' ')[0].replace(',', '').split('/')
+    const orderedDateArray = []
+    // reordering date so it is same format as user input
+    orderedDateArray.push(dateArray[2], dateArray[0], dateArray[1])
+    // conditional to add a 0 in front if month is single digit
+    if (orderedDateArray[1].length === 1) {
+      orderedDateArray[1] = '0' + orderedDateArray[1]
+      console.log('new orderedDateArray[1] is', orderedDateArray[1])
+    }
+    // conditional to add 0 in front if day is single digit
+    if (orderedDateArray[2].length === 1) {
+      orderedDateArray[2] = '0' + orderedDateArray[2]
+    }
+    // joining the array with - to match user input
+    const date = orderedDateArray.join('-')
     return (
       this.setState({ date }),
-      console.log(this.state)
+      console.log('date is', this.state.date)
     )
   }
 
@@ -67,7 +82,7 @@ class Expenses extends Component {
                 {expenses.map(expense => (
                   <li key={expense.id} className="expenses">
                     <div className="">
-                      <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.chargeDate}</button></Link>
+                      <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.date}</button></Link>
                       <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
                     </div>
                   </li>
