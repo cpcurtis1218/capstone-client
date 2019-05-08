@@ -86,9 +86,9 @@ class ExpenseCreate extends Component {
               </span>
             </div>
             <div className="m-2">
-              <label htmlFor="category-dropdown">Category:</label>
+              <label htmlFor="category">Category:</label>
               <span className="expenses-amount">
-                <DropdownButton id="category-dropdown" title={category}>
+                <DropdownButton id="category-dropdown" title={category} name="category">
                   <Dropdown.Header>Choose Category</Dropdown.Header>
                   <Dropdown.Divider />
                   <Dropdown.Item eventKey="Food" onSelect={this.onSelect}>Food</Dropdown.Item>
