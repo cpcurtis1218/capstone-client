@@ -4,6 +4,7 @@ import apiUrl from '../apiConfig'
 import { withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router'
 import messages from './messagesContent.js'
+import { Dropdown, DropdownButton } from 'react-bootstrap'
 
 class ExpenseEdit extends Component {
   constructor () {
@@ -39,6 +40,12 @@ class ExpenseEdit extends Component {
   handleChange = (event) => {
     this.setState({ expense: {
       ...this.state.expense, [event.target.name]: event.target.value
+    } })
+  }
+
+  onSelect = (value) => {
+    this.setState({ expense: {
+      ...this.state.expense, category: value
     } })
   }
 
@@ -95,7 +102,14 @@ class ExpenseEdit extends Component {
             <div className="m-2">
               <label htmlFor="category">Category:</label>
               <span className="expenses-amount">
-                <input required={true} value={category} name="category" onChange={this.handleChange} />
+                <DropdownButton id="category-dropdown" title={category} name="category">
+                  <Dropdown.Header>Choose Category</Dropdown.Header>
+                  <Dropdown.Divider />
+                  <Dropdown.Item eventKey="Food" onSelect={this.onSelect}>Food</Dropdown.Item>
+                  <Dropdown.Item eventKey="Rent" onSelect={this.onSelect}>Rent</Dropdown.Item>
+                  <Dropdown.Item eventKey="Bill" onSelect={this.onSelect}>Bill</Dropdown.Item>
+                  <Dropdown.Item eventKey="Other" onSelect={this.onSelect}>Other</Dropdown.Item>
+                </DropdownButton>
               </span>
             </div>
             <div className="m-2">
