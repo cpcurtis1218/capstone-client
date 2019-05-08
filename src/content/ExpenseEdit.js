@@ -80,25 +80,25 @@ class ExpenseEdit extends Component {
         <div className="expense-form">
           <h3>Update Expense</h3>
           <form className="p-2" onSubmit={this.handleSubmit}>
-            <div className="m-1">
+            <div className="m-2">
               <label htmlFor="date">Date:</label>
               <span className="expenses-amount">
                 <input required={true} value={date} type="date" name="date" onChange={this.handleChange} />
               </span>
             </div>
-            <div className="m-1">
+            <div className="m-2">
               <label htmlFor="amount">Amount: $</label>
               <span className="expenses-amount">
                 <input required={true} value={amount} type="number" name="amount" onChange={this.handleChange} />
               </span>
             </div>
-            <div className="m-1">
+            <div className="m-2">
               <label htmlFor="category">Category:</label>
               <span className="expenses-amount">
                 <input required={true} value={category} name="category" onChange={this.handleChange} />
               </span>
             </div>
-            <div className="m-1">
+            <div className="m-2">
               <label htmlFor="description">Description:</label>
               <span className="expenses-amount">
                 <input value={description || ''} placeholder="Description" name="description" onChange={this.handleChange} />
