@@ -6,29 +6,16 @@ body {
   background-attachment: fixed;
   background-size: cover;
   font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
-ul {
-  padding: 0;
-}
-
-#category-dropdown {
-  background: white;
-  border-color: initial;
-  border-image: initial;
-  border-radius: 0;
-  border-style: inset;
-  border-width: 2px;
-  color: black;
-  padding: 3px 10px;
-  text-align: right;
-  width: 174px;
+main.container {
+    float: right;
+    margin-top: 15vh;
+    width: 80%;
 }
 
 .expense {
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, .8);
   border-radius: 3px;
   color: white;
   margin: 0 auto;
@@ -36,14 +23,14 @@ ul {
 }
 
 .expenses {
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, .8);
   border: 1px solid grey;
   border-radius: 3px;
   color: white;
   list-style-type: none;
   margin: 0 auto;
+  max-width: 350px;
   padding: 2px;
-  width: 400px;
 }
 
 .expenses-amount {
@@ -60,36 +47,92 @@ ul {
 
 .expenses-div {
   >h3 {
+    background: white;
+    border: 1px solid grey;
+    border-radius: 6px;
+    color: black;
+    height: 40px;
+    margin: 5px auto;
     text-align: center;
+    width: 20%;
   }
 }
 
 .expense-form {
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, .8);
   border: 1px solid grey;
   border-radius: 3px;
   color: white;
   margin: 0 auto;
   width: 400px;
-}
 
-.homenav {
-  text-align: center;
-  width: 100%;
-
-  h3 {
-    background-color: white;
-    border-radius: 9px;
-    margin: 10px auto;
-    padding: 10px;
-    width: 45%;
+  > h3 {
+    text-align: center;
   }
 }
 
-.main-header {
-  // background-image: url('https://i.imgur.com/qtFTF54.jpg');
+.sidebar {
+  background: white;
+  float: left;
+  height: 90vh;
+  margin-top: 10vh;
+  position: fixed;
+  width: 20%;
+
+  .homenav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
+    .homenav-btn {
+      align-items: center;
+      background-color: white;
+      color: #444;
+      font-size: 1.3rem;
+      height: 35px;
+      margin-bottom: 5px;
+      text-align: center;
+      text-decoration: none;
+
+      &:hover {
+        background-color: grey;
+        color: white;
+      }
+    }
+
+    .selected {
+      background-color: black;
+      color: white;
+      font-weight: 600;
+
+      &:hover {
+        background-color: black;
+        color: white;
+        font-weight: 600;
+      }
+    }
+
+    h3 {
+      margin: 10px auto;
+      text-align: center;
+    }
+  }
 }
 
 .react-calendar {
   height: 375px;
+  margin: 0 auto;
+}
+
+#category-dropdown {
+  background: white;
+  border-color: initial;
+  border-image: initial;
+  border-radius: 0;
+  border-style: inset;
+  border-width: 2px;
+  color: black;
+  padding: 3px 10px;
+  text-align: right;
+  width: 174px;
 }
