@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Navbar from 'react-bootstrap/Navbar'
 
 import './Header.scss'
 
@@ -18,7 +19,7 @@ const unauthenticatedOptions = (
 )
 
 const Header = ({ user }) => (
-  <header className="main-header sticky-top">
+  <Navbar className="main-header" fixed="top">
     <Link to="/">
       <h3>Expense Tracker</h3>
     </Link>
@@ -26,7 +27,7 @@ const Header = ({ user }) => (
       { user && <span>Welcome, {user.email}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }
     </nav>
-  </header>
+  </Navbar>
 )
 
 export default Header
