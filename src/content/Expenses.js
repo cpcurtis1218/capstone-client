@@ -72,45 +72,45 @@ class Expenses extends Component {
     } else if (date) {
       const dateChosen = expenses.filter(expense => expense.date === date)
       return (
-        <div className="expenses-div row">
-          <h3>My Expenses</h3>
-          <div className="col-6">
-            <Calendar className="calendar" onChange={this.onChange}/>
+        <React.Fragment>
+          <h3 className="my-expenses">My Expenses</h3>
+          <div className="expenses-div row">
+            <div className="col-6">
+              <Calendar className="calendar" onChange={this.onChange}/>
+            </div>
+            <ul className="col-6">
+              {dateChosen.map(expense => (
+                <li key={expense.id} className="expenses">
+                  <div className="">
+                    <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.date}</button></Link>
+                    <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="col-6">
-            {dateChosen.map(expense => (
-              <li key={expense.id} className="expenses">
-                <div className="">
-                  <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.date}</button></Link>
-                  <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+        </React.Fragment>
       )
     } else {
       return (
-        <div className="expenses-div">
-          <h3>My Expenses</h3>
-          <div className="container">
-            <div className="row">
-              <div className="col-6">
-                <Calendar className="calendar" onChange={this.onChange}/>
-              </div>
-              <ul className="col-6">
-                {expenses.map(expense => (
-                  <li key={expense.id} className="expenses">
-                    <div className="">
-                      <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.date}</button></Link>
-                      <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+        <React.Fragment>
+          <h3 className="my-expenses">My Expenses</h3>
+          <div className="expenses-div row">
+            <div className="col-6">
+              <Calendar className="calendar" onChange={this.onChange}/>
             </div>
+            <ul className="col-6">
+              {expenses.map(expense => (
+                <li key={expense.id} className="expenses">
+                  <div className="">
+                    <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.date}</button></Link>
+                    <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
+        </React.Fragment>
       )
     }
   }

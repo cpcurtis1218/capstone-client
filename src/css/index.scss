@@ -37,8 +37,7 @@ main.container {
   width: 120px;
 }
 
-.expenses-div {
-  >h3 {
+.my-expenses {
     background: white;
     border: 1px solid grey;
     border-radius: 6px;
@@ -48,7 +47,6 @@ main.container {
     text-align: center;
     width: 20%;
   }
-}
 
 .expense-form {
   background-color: rgba(0, 0, 0, .8);
