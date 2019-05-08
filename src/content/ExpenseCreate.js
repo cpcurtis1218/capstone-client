@@ -4,6 +4,7 @@ import apiUrl from '../apiConfig'
 import { withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router'
 import messages from './messagesContent.js'
+import { Dropdown, DropdownButton } from 'react-bootstrap'
 
 class ExpenseCreate extends Component {
   constructor () {
@@ -12,7 +13,7 @@ class ExpenseCreate extends Component {
     this.state = {
       expense: {
         amount: '',
-        category: '',
+        category: 'Choose Category',
         description: '',
         date: ''
       },
@@ -24,6 +25,12 @@ class ExpenseCreate extends Component {
   handleChange = (event) => {
     this.setState({ expense: {
       ...this.state.expense, [event.target.name]: event.target.value
+    } })
+  }
+
+  onSelect = (value) => {
+    this.setState({ expense: {
+      ...this.state.expense, category: value
     } })
   }
 
@@ -66,25 +73,32 @@ class ExpenseCreate extends Component {
         <div className="expense-form">
           <h3>Create a new Expense!</h3>
           <form className="p-2" onSubmit={this.handleSubmit}>
-            <div className="m-1">
+            <div className="m-2">
               <label htmlFor="date">Date:</label>
               <span className="expenses-amount">
                 <input required={true} value={date} type="date" name="date" onChange={this.handleChange} />
               </span>
             </div>
-            <div className="m-1">
+            <div className="m-2">
               <label htmlFor="amount">Amount: $</label>
               <span className="expenses-amount">
                 <input required={true} value={amount} type="number" name="amount" onChange={this.handleChange} />
               </span>
             </div>
-            <div className="m-1">
-              <label htmlFor="category">Category:</label>
+            <div className="m-2">
+              <label htmlFor="category-dropdown">Category:</label>
               <span className="expenses-amount">
-                <input required={true} value={category} name="category" onChange={this.handleChange} />
+                <DropdownButton id="category-dropdown" title={category}>
+                  <Dropdown.Header>Choose Category</Dropdown.Header>
+                  <Dropdown.Divider />
+                  <Dropdown.Item eventKey="Food" onSelect={this.onSelect}>Food</Dropdown.Item>
+                  <Dropdown.Item eventKey="Rent" onSelect={this.onSelect}>Rent</Dropdown.Item>
+                  <Dropdown.Item eventKey="Bill" onSelect={this.onSelect}>Bill</Dropdown.Item>
+                  <Dropdown.Item eventKey="Other" onSelect={this.onSelect}>Other</Dropdown.Item>
+                </DropdownButton>
               </span>
             </div>
-            <div className="m-1">
+            <div className="m-2">
               <label htmlFor="description">Description:</label>
               <span className="expenses-amount">
                 <input value={description} name="description" onChange={this.handleChange} />
