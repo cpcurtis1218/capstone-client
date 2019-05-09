@@ -71,6 +71,15 @@ class Expenses extends Component {
       )
     } else if (date) {
       const dateChosen = expenses.filter(expense => expense.date === date)
+      // calculating the total amout for specified date
+      const total = (arr) => {
+        let acc = 0.00
+        for (let i = 0; i < arr.length; i++) {
+          acc = parseFloat(acc) + parseFloat(arr[i].amount)
+        }
+        return parseFloat(Math.round(acc * 100) / 100).toFixed(2)
+      }
+      const dayTotal = total(dateChosen)
       return (
         <React.Fragment>
           <h3 className="my-expenses">My Expenses</h3>
@@ -87,6 +96,8 @@ class Expenses extends Component {
                   </div>
                 </li>
               ))}
+              <br/>
+              <p className="day-total">{date} total: <span>${dayTotal}</span></p>
             </ul>
           </div>
         </React.Fragment>
