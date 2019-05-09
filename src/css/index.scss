@@ -14,7 +14,7 @@ main.container {
     width: 80%;
 }
 
-.expenses {
+.expenses, .day-total {
   background-color: rgba(0, 0, 0, .8);
   border: 1px solid grey;
   border-radius: 3px;
@@ -25,7 +25,7 @@ main.container {
   padding: 2px;
 }
 
-.expenses-amount {
+.expenses-amount, span {
   float: right;
 }
 
