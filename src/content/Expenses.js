@@ -70,15 +70,18 @@ class Expenses extends Component {
         </div>
       )
     } else if (date) {
+      // filter the expenses array to find dates that match
       const dateChosen = expenses.filter(expense => expense.date === date)
-      // calculating the total amout for specified date
+      // calculate the total amout for specified date
       const total = (arr) => {
         let acc = 0.00
         for (let i = 0; i < arr.length; i++) {
           acc = parseFloat(acc) + parseFloat(arr[i].amount)
         }
+        // return the accumulator, rounded to 2 decimal places
         return parseFloat(Math.round(acc * 100) / 100).toFixed(2)
       }
+      // save the total for the specified date as the variable dayTotal
       const dayTotal = total(dateChosen)
       return (
         <React.Fragment>
