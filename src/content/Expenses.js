@@ -99,7 +99,7 @@ class Expenses extends Component {
                 </li>
               ))}
               <br/>
-              <p className="day-total pl-3">{date}    Total: <span>${dayTotal}</span></p>
+              <p className="day-total pl-4">{date}<span>Total: ${dayTotal}</span></p>
             </ul>
           </div>
         </React.Fragment>
