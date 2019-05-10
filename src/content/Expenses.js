@@ -90,14 +90,13 @@ class Expenses extends Component {
             <ul className="col-6">
               {dateChosen.map(expense => (
                 <li key={expense.id} className="expenses">
-                  <div className="">
-                    <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.date}</button></Link>
-                    <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
-                  </div>
+                  <Link to={'/expenses/' + expense.id}><button className="expenses-btn mr-1">{expense.date}</button></Link>
+                  {expense.category}
+                  <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
                 </li>
               ))}
               <br/>
-              <p className="day-total">{date} total: <span>${dayTotal}</span></p>
+              <p className="day-total pl-3">{date}    Total: <span>${dayTotal}</span></p>
             </ul>
           </div>
         </React.Fragment>
@@ -113,10 +112,9 @@ class Expenses extends Component {
             <ul className="col-6">
               {expenses.map(expense => (
                 <li key={expense.id} className="expenses">
-                  <div className="">
-                    <Link to={'/expenses/' + expense.id}><button className="expenses-btn">{expense.date}</button></Link>
-                    <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
-                  </div>
+                  <Link to={'/expenses/' + expense.id}><button className="expenses-btn mr-1">{expense.date}</button></Link>
+                  {expense.category}
+                  <span className="expenses-amount">${parseFloat(Math.round(expense.amount * 100) / 100).toFixed(2)}</span>
                 </li>
               ))}
             </ul>
