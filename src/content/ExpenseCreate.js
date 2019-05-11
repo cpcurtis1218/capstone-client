@@ -22,6 +22,16 @@ class ExpenseCreate extends Component {
     }
   }
 
+  componentDidMount () {
+    // if the location.state prop exists, set this.state.expense.date to the date
+    const { state } = this.props.location
+    if (state) {
+      this.setState({ expense: {
+        ...this.state.expense, date: state.date
+      } })
+    }
+  }
+
   handleChange = (event) => {
     this.setState({ expense: {
       ...this.state.expense, [event.target.name]: event.target.value
