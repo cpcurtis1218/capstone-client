@@ -100,6 +100,10 @@ class Expenses extends Component {
               ))}
               <br/>
               <p className="day-total pl-4">{date}<span>Total: ${dayTotal}</span></p>
+              <br />
+              <div className="expenses-back-btn">
+                <Link to={'/expenses/'} onClick={() => this.setState({ date: null })}><button>Back To All Expenses</button></Link>
+              </div>
             </ul>
           </div>
         </React.Fragment>
