@@ -103,6 +103,11 @@ class Expenses extends Component {
               <br />
               <div className="expenses-back-btn">
                 <Link to={'/expenses/'} onClick={() => this.setState({ date: null })}><button>Back To All Expenses</button></Link>
+                <Link to={{
+                  pathname: '/expenses-create',
+                  state: {
+                    date: date
+                  } }}><button>New Expense</button></Link>
               </div>
             </ul>
           </div>
